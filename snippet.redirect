@@ -1,0 +1,13 @@
+<?php
+if ($modx->user->hasSessionContext($modx->context->get('key'))) {
+$user = $modx->getUser();
+if (!$user) return '';
+$default = 1;
+$userId = $user->get('id');
+$docId = $modx->getOption('LoginResource', null);
+if (empty($docId)) {
+	  $docId=1;
+}
+$url = $modx->makeUrl($docId, "", "", "full");
+echo $url;
+$modx->sendRedirect($url);}
